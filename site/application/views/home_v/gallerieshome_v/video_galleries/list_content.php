@@ -16,7 +16,7 @@
 
                     <?php foreach($galleries_video as $gallery) { ?>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <div class="image-box shadow text-center mb-20">
                                 <div class="overlay-container overlay-visible">
                                     <img src="<?php echo base_url("assets/images"); ?>/default_video_gallery.png" alt="<?php echo $gallery->title; ?>">
