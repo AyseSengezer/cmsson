@@ -6,7 +6,7 @@
 
             <!-- main start -->
             <!-- ================ -->
-            <div class="main col-md-12">
+            <div class="main col-md-8">
 
                 <!-- page-title start -->
                 <!-- ================ -->
