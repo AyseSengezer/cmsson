@@ -238,9 +238,7 @@ class Home extends CI_Controller {
         }
 
     }
-
    
-    
     public function image_home_gallery($gallery_url = ""){// image_gallery
         if($gallery_url){
     
@@ -289,4 +287,6 @@ class Home extends CI_Controller {
         }
 
     }
+
+   
 }

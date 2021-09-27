@@ -5,6 +5,7 @@
     <section class="main-container">
 
         <div class="container">
+
             <div class="row">
                 <!-- main start -->
                 
@@ -12,6 +13,7 @@
 
                 <!-- main end -->
             </div>
+            
             <div class="row">
                 <!-- main start -->
                 

@@ -98,3 +98,7 @@ public function index(){
     <button class="btn btn-danger"><a href="<?php echo base_url("anasayfa-galerisi"); ?>">anasayfa-galerisi</a></button>
                 <?php $this->load->view("{$viewFolder}/gallerieshome_v"); ?
  ?>
+
+
+
+ <?php $this->load->view("home_v/gallerieshome_v/image_galleries/list_content"); ?>

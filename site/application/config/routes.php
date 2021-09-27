@@ -70,3 +70,5 @@ $route["anasayfa-galerisi/(:any)"] = "home/image_home_gallery/$1";
 
 $route["anasayfa-video-galerisi"]        = "home/video_home_list";
 $route["anasayfa-video-galerisi/(:any)"] = "home/video_home_gallery/$1";
+
+
