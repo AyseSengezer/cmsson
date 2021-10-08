@@ -12,7 +12,7 @@
 
                 <!-- page-title start -->
                 <!-- ================ -->
-                <h1 class="page-title">Resim Galerileri</h1>
+                <h1 class="page-title">Resimler</h1>
                 <div class="separator-2"></div>
                 <div class="row">
                     <?php foreach($galleries as $gallery) { ?>

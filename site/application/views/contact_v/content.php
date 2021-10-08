@@ -2,7 +2,7 @@
 
 <!-- banner start -->
 <!-- ================ -->
-<div class="banner dark-translucent-bg" style="background-image:url('<?php echo base_url("assets/images");?>//b/2.jpg'); background-position: 50% 30%;">
+<div class="banner dark-translucent-bg" style="background-image:url('<?php echo base_url("assets/images");?>/b/2.jpg'); background-position: 50% 30%;">
     <div class="container">
         <div class="row justify-content-lg-center">
             <div class="col-lg-8 text-center pv-20">

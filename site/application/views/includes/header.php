@@ -75,28 +75,7 @@
                           <a href="<?php echo base_url(); ?>
                           " class="nav-link" >Anasayfa</a>
                         </li>
-                         <li class="nav-item dropdown ">
-                          <a href="#" class="nav-link dropdown-toggle" id="third-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hizmetlerimiz</a>
-                          <ul class="dropdown-menu" aria-labelledby="third-dropdown">
-                           
-                            <li ><a href="#">Düğün</a></li>
-                            <li ><a href="#">Nişan</a></li>
-                            <li ><a href="#">Video</a></li>
-                            <li ><a href="#">Kimlik-Ehliyet</a></li>
-                            <li ><a href="#">Pasaport</a></li>
-                            <li ><a href="#">Schengen</a></li>
-                            <li ><a href="#">Hamile</a></li>
-                            <li ><a href="#">Doğum</a></li>
-                            <li ><a href="#">Bebek</a></li>
-                            <li ><a href="#">Bahçe</a></li>
-                            <li ><a href="#">Mezuniyet-Yıllık</a></li>
-                            <li ><a href="#">Sünnet</a></li>
-                            <li ><a href="#">Moda</a></li>
-                            <li ><a href="#">Ürün</a></li>
-                            <li ><a href="#">Fabrika_İşyeri</a></li>
-                            
-                          </ul>
-                        </li>
+                    
                         <li class="nav-item dropdown ">
                             <a href="#" class="nav-link dropdown-toggle" id="third-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Galeriler</a>
                             <ul class="dropdown-menu" aria-labelledby="third-dropdown">

@@ -72,3 +72,4 @@ $route["anasayfa-video-galerisi"]        = "home/video_home_list";
 $route["anasayfa-video-galerisi/(:any)"] = "home/video_home_gallery/$1";
 
 
+

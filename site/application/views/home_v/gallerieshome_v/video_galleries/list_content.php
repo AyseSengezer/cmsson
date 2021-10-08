@@ -10,7 +10,7 @@
 
                 <!-- page-title start -->
                 <!-- ================ -->
-                <h1 class="page-title">Video Galerileri</h1>
+                <h1 class="page-title">Videolar</h1>
                 <div class="separator-2"></div>
                 <div class="row">
 

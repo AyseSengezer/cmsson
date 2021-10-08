@@ -149,8 +149,7 @@
                         <div class="footer-content">
                             <h2 class="title">Bizimle iletişime geçin</h2>
                             <div class="separator-2"></div>
-                            <p><?php echo $settings->slogan; ?>
-                            </p>
+                            
                             <ul class="social-links circle animated-effect-1" style="display: inline !important;">
                                 
                                 <?php if ($settings->facebook) { ?> 
