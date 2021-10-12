@@ -24,7 +24,7 @@
 <!-- Contact form -->
 <script src="<?php echo base_url("assets"); ?>/plugins/jquery.validate.js"></script>
 <!-- Google Maps javascript -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyAKSVUPOSDlnpXgXifnWsPbFLcFqJ2_Sgo"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyBh57iJWqslVRwFHcvWs7Pn_ecZqLpG69k"></script>
 <script id="mapScriptTag" type="text/javascript" data-lat="<?php echo $settings->lat; ?>" data-long="<?php echo $settings->long; ?>" src="<?php echo base_url("assets"); ?>/js/google.map.config.js"></script>
 <!-- Background Video -->
 <script src="<?php echo base_url("assets"); ?>/plugins/vide/jquery.vide.js"></script>

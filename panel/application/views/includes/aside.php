@@ -9,8 +9,7 @@
         <div class="avatar avatar-md avatar-circle">
           <a href="javascript:void(0)"><img class="img-responsive" 
           src="<?php echo base_url("assets"); ?>/assets/images/221.jpg" 
-          alt="<?php echo convertToSEO($user->full_name); ?>
-          "/></a>
+          alt="<?php echo convertToSEO($user->full_name); ?>"/></a>
         </div><!-- .avatar -->
       </div>
       <div class="media-body">
@@ -25,7 +24,7 @@
               </a>
               <ul class="dropdown-menu animated flipInY">
                 <li>
-                  <a class="text-color" href="<?php echo base_url(); ?>">
+                  <a class="text-color" href="<?php echo "http://localhost/cms/site/"; ?>">
                     <span class="m-r-xs"><i class="fa fa-home"></i></span>
                     <span>Anasayfa</span>
                   </a>
@@ -112,12 +111,6 @@
           <a href="<?php echo base_url("users"); ?>">
             <i class="menu-icon fa fa-user"></i>
             <span class="menu-text">Kullanıcılar</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-users"></i>Aboneler</span>
           </a>
         </li>
 
