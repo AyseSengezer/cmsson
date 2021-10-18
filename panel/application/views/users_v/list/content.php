@@ -2,13 +2,14 @@
     <div class="col-md-12">
         <h4 class="m-b-lg">
             Kullanıcı Listesi
+
             <a href="<?php echo base_url("users/new_form"); ?>" class="btn btn-outline btn-primary btn-xs pull-right"> <i class="fa fa-plus"></i> Yeni Ekle</a>
         </h4>
     </div><!-- END column -->
     <div class="col-md-12">
         <div class="widget p-lg">
 
-            <?php if(empty($items)) { ?>
+            <?php if (empty($items)) { ?>
 
                 <div class="alert alert-info text-center">
                     <p>Burada herhangi bir veri bulunmamaktadır. Eklemek için lütfen <a href="<?php echo base_url("users/new_form"); ?>">tıklayınız</a></p>
@@ -27,7 +28,7 @@
                     </thead>
                     <tbody>
 
-                        <?php foreach($items as $item) { ?>
+                        <?php foreach ($items as $item) { ?>
 
                             <tr>
                                 <td class="w50 text-center">#<?php echo $item->id; ?></td>
@@ -35,20 +36,10 @@
                                 <td><?php echo $item->full_name; ?></td>
                                 <td class="text-center"><?php echo $item->email; ?></td>
                                 <td class="text-center w100">
-                                    <input
-                                        data-url="<?php echo base_url("users/isActiveSetter/$item->id"); ?>"
-                                        class="isActive"
-                                        type="checkbox"
-                                        data-switchery
-                                        data-color="#10c469"
-                                        style="display: none;"
-                                        <?php echo ($item->isActive) ? "checked" : ""; ?>
-                                    />
+                                    <input data-url="<?php echo base_url("users/isActiveSetter/$item->id"); ?>" class="isActive" type="checkbox" data-switchery data-color="#10c469" style="display: none;" <?php echo ($item->isActive) ? "checked" : ""; ?> />
                                 </td>
                                 <td class="text-center w300">
-                                    <button
-                                        data-url="<?php echo base_url("users/delete/$item->id"); ?>"
-                                        class="btn btn-sm btn-danger btn-outline remove-btn">
+                                    <button data-url="<?php echo base_url("users/delete/$item->id"); ?>" class="btn btn-sm btn-danger btn-outline remove-btn">
                                         <i class="fa fa-trash"></i> Sil
                                     </button>
                                     <a href="<?php echo base_url("users/update_form/$item->id"); ?>" class="btn btn-sm btn-info btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</a>

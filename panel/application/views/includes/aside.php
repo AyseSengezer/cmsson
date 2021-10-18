@@ -24,7 +24,7 @@
               </a>
               <ul class="dropdown-menu animated flipInY">
                 <li>
-                  <a class="text-color" href="<?php echo "http://localhost/cms/site/"; ?>">
+                  <a class="text-color" target="_blank" href="<?php echo "http://localhost/cms/site/"; ?>">
                     <span class="m-r-xs"><i class="fa fa-home"></i></span>
                     <span>Anasayfa</span>
                   </a>
@@ -57,7 +57,7 @@
     <div class="menubar-scroll-inner">
       <ul class="app-menu">
         <li>
-          <a href="javascript:void(0)">
+          <a href="<?php echo base_url(); ?>">
             <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
             <span class="menu-text">Dashboard</span>
           </a>

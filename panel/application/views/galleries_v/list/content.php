@@ -38,31 +38,27 @@
                                 <td><?php echo $item->folder_name; ?></td>
                                 <td><?php echo $item->url; ?></td>
                                 <td>
-                                    <input data-url="<?php echo base_url("galleries/isActiveSetter/$item->id"); ?>" 
-                                        class="isActive" style="display: none;" type="checkbox" data-switchery data-color="#10c469" <?php echo ($item->isActive) ? "checked" : ""; ?> />
+                                    <input data-url="<?php echo base_url("galleries/isActiveSetter/$item->id"); ?>" class="isActive" style="display: none;" type="checkbox" data-switchery data-color="#10c469" <?php echo ($item->isActive) ? "checked" : ""; ?> />
                                 <td>
-                                    <button data-url="<?php echo base_url("galleries/delete/$item->id"); ?>" 
-                                        class="btn btn-sm btn-danger btn-outline remove-btn">
-                                        <i class="fa fa-trash"></i> Sil</button>
-                                    
-                                    <?php 
-                                        if($item->gallery_type == "image"){
 
-                                            $button_icon = "fa-image";
-                                            $button_url  ="galleries/upload_form/$item->id";
-                                        } else if($item->gallery_type == "video"){
 
-                                            $button_icon = "fa-play-circle-o";
-                                            $button_url  ="galleries/gallery_video_list/$item->id";
+                                    <?php
+                                    if ($item->gallery_type == "image") {
 
-                                        }else {
+                                        $button_icon = "fa-image";
+                                        $button_url  = "galleries/upload_form/$item->id";
+                                    } else if ($item->gallery_type == "video") {
 
-                                            $button_icon = "fa-folder";
-                                            $button_url = "galleries/upload_form/$item->id"; 
-                                        }
-                                           
+                                        $button_icon = "fa-play-circle-o";
+                                        $button_url  = "galleries/gallery_video_list/$item->id";
+                                    } else {
+
+                                        $button_icon = "fa-folder";
+                                        $button_url = "galleries/upload_form/$item->id";
+                                    }
+
                                     ?>
-                                    
+
                                     <a href="<?php echo base_url("galleries/update_form/$item->id"); ?>" class="btn btn-sm btn-info btn-outline">
                                         <i class="fa fa-pencil-square-o"></i> Düzenle</a>
                                     <a href="<?php echo base_url($button_url); ?>" class="btn btn-sm btn-dark btn-outline">
@@ -80,12 +76,3 @@
         </div><!-- .widget -->
     </div><!-- END column -->
 </div>
-
-
-
-
-
-
-
-
-
