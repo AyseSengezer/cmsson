@@ -119,6 +119,38 @@ function get_isotopedugun()
     //  not <?php $settings = get_settings();  ile sayfadan çağır $settings->adress gibi autoload kütüphane ekle session
 }
 
+function get_isotopemezun()
+{
+    // ! gallery_id sabit kalmalı
+    $t = &get_instance();
+
+    //    $settings = $t->session->userdata("settings");
+
+    //    if(empty($settings)){
+
+    $t->load->model("image_model"); // modeli çağır
+
+    $mezunimage = $t->image_model->get_all(
+        array(
+            "isActive" => 1,
+            "gallery_id" => 17
+        ),
+        "rank DESC"
+    ); // verileri al
+
+    $t->session->set_userdata("mezunimage", $mezunimage); //session at
+    //    }
+
+
+
+    return $mezunimage; // çalıştır
+
+    // print_r($image);
+    // die();
+
+    //  not <?php $settings = get_settings();  ile sayfadan çağır $settings->adress gibi autoload kütüphane ekle session
+}
+
 function send_mail($toEmail = "", $subject = "", $message = "")
 {
 
@@ -182,7 +214,7 @@ function get_picture($path = "", $picture = "", $resolution = "50x50")
 function get_gallery_cover_image($folderName)
 {
 
-    $path = "panel/uploads/galleries_v/images/$folderName/350x216";
+    $path = "panel/uploads/galleries_v/images/$folderName/364x216";
 
     if ($handle = opendir($path)) {
         while (($file = readdir($handle)) !== false) {

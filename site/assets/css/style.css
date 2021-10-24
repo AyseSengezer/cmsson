@@ -4254,11 +4254,29 @@ ul.pagination .page-item.active .page-link,
   padding: 7px 10px;
   border: 1px solid transparent;
   color: #999999;
-  font-size: 13px;
+  font-size: 15px;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
+}
+/* ! ben ekledim */
+@media (max-width: 768px) {
+  .nav-pills > li .nav-link {
+    font-size: 14px;
+    font-weight: 600;
+  }
 }
 
+@media (max-width: 500px) {
+  .nav-pills > li .nav-link {
+    font-size: 10px;
+    font-weight: 400;
+    padding: 2px 5px;
+  }
+  h1.page-title {
+    font-size: 20px;
+  }
+}
+/*  ! bitti */
 .nav-pills > li .nav-link.active,
 .nav-pills > li .nav-link.active:hover,
 .nav-pills > li .nav-link.active:focus,
@@ -5925,6 +5943,17 @@ fieldset[disabled] .form-control {
 
 /* ! ****************** */
 @media (max-width: 575px) {
+  .image-box,
+  .shadow,
+  .overlay-container,
+  .overlay-visible,
+  .overlay-bottom,
+  .overlay-link {
+    width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
   .image-box,
   .shadow,
   .overlay-container,

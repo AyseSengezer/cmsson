@@ -17,7 +17,7 @@
                         <div class="col-sm-4">
                             <div class="image-box shadow text-center mb-20">
                                 <div class="overlay-container overlay-visible">
-                                    <img src="<?php echo get_picture("galleries_v/images/$gallery->folder_name", get_gallery_cover_image($gallery->folder_name), "350x216"); ?>" alt="<?php echo $gallery->title; ?>">
+                                    <img src="<?php echo get_picture("galleries_v/images/$gallery->folder_name", get_gallery_cover_image($gallery->folder_name), "364x216"); ?>" alt="<?php echo $gallery->title; ?>">
                                     <a href="<?php echo base_url("fotograf-galerisi/$gallery->url"); ?>" class="overlay-link"><i class="fa fa-link"></i></a>
                                     <div class="hidden-xs">
                                         <div class="text">

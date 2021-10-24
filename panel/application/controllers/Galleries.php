@@ -16,18 +16,20 @@ class Galleries extends CI_Controller
         $this->load->model("video_model");
         $this->load->model("file_model");
 
-        if(!get_active_user()){
+        if (!get_active_user()) {
             redirect(base_url("login"));
         }
     }
 
-    public function index(){
+    public function index()
+    {
 
         $viewData = new stdClass();
 
         /** Tablodan Verilerin Getirilmesi.. */
         $items = $this->gallery_model->get_all(
-            array(), "rank ASC"
+            array(),
+            "rank ASC"
         );
 
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
@@ -38,7 +40,8 @@ class Galleries extends CI_Controller
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
     }
 
-    public function new_form(){
+    public function new_form()
+    {
 
         $viewData = new stdClass();
 
@@ -47,10 +50,10 @@ class Galleries extends CI_Controller
         $viewData->subViewFolder = "add";
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-
     }
 
-    public function save(){
+    public function save()
+    {
 
         $this->load->library("form_validation");
 
@@ -65,27 +68,26 @@ class Galleries extends CI_Controller
 
         $validate = $this->form_validation->run();
 
-        if($validate){
+        if ($validate) {
 
             $gallery_type = $this->input->post("gallery_type");
             $path         = "uploads/$this->viewFolder/";
             $folder_name = "";
 
-            if($gallery_type == "image"){
+            if ($gallery_type == "image") {
 
                 $folder_name = convertToSEO($this->input->post("title"));
                 $path = "$path/images/$folder_name";
-
-            } else if($gallery_type == "file"){
+            } else if ($gallery_type == "file") {
 
                 $folder_name = convertToSEO($this->input->post("title"));
                 $path = "$path/files/$folder_name";
             }
 
 
-            if($gallery_type != "video"){
+            if ($gallery_type != "video") {
 
-                if(!mkdir($path, 0755)){
+                if (!mkdir($path, 0755)) {
 
                     $alert = array(
                         "title" => "İşlem Başarısız",
@@ -99,7 +101,6 @@ class Galleries extends CI_Controller
                     redirect(base_url("galerries"));
                     die();
                 }
-
             }
 
             $insert = $this->gallery_model->add(
@@ -115,14 +116,13 @@ class Galleries extends CI_Controller
             );
 
             // TODO Alert sistemi eklenecek...
-            if($insert){
+            if ($insert) {
 
                 $alert = array(
                     "title" => "İşlem Başarılı",
                     "text" => "Kayıt başarılı bir şekilde eklendi",
                     "type"  => "success"
                 );
-
             } else {
 
                 $alert = array(
@@ -136,7 +136,6 @@ class Galleries extends CI_Controller
             $this->session->set_flashdata("alert", $alert);
 
             redirect(base_url("galleries"));
-
         } else {
 
             $viewData = new stdClass();
@@ -148,10 +147,10 @@ class Galleries extends CI_Controller
 
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
-
     }
 
-    public function update_form($id){
+    public function update_form($id)
+    {
 
         $viewData = new stdClass();
 
@@ -161,18 +160,17 @@ class Galleries extends CI_Controller
                 "id"    => $id,
             )
         );
-        
+
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "update";
         $viewData->item = $item;
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-
-
     }
 
-    public function update($id, $gallery_type, $oldFolderName = ""){
+    public function update($id, $gallery_type, $oldFolderName = "")
+    {
 
         $this->load->library("form_validation");
 
@@ -187,26 +185,25 @@ class Galleries extends CI_Controller
 
         $validate = $this->form_validation->run();
 
-        if($validate){
+        if ($validate) {
 
             $path         = "uploads/$this->viewFolder/";
             $folder_name = "";
 
-            if($gallery_type == "image"){
+            if ($gallery_type == "image") {
 
                 $folder_name = convertToSEO($this->input->post("title"));
                 $path = "$path/images";
-
-            } else if($gallery_type == "file"){
+            } else if ($gallery_type == "file") {
 
                 $folder_name = convertToSEO($this->input->post("title"));
                 $path = "$path/files";
             }
 
 
-            if($gallery_type != "video"){
+            if ($gallery_type != "video") {
 
-                if(!rename("$path/$oldFolderName", "$path/$folder_name")){
+                if (!rename("$path/$oldFolderName", "$path/$folder_name")) {
 
                     $alert = array(
                         "title" => "İşlem Başarısız",
@@ -220,7 +217,6 @@ class Galleries extends CI_Controller
                     redirect(base_url("galleries"));
                     die();
                 }
-
             }
 
 
@@ -236,14 +232,13 @@ class Galleries extends CI_Controller
             );
 
             // TODO Alert sistemi eklenecek...
-            if($update){
+            if ($update) {
 
                 $alert = array(
                     "title" => "İşlem Başarılı",
                     "text" => "Kayıt başarılı bir şekilde güncellendi",
                     "type"  => "success"
                 );
-
             } else {
 
                 $alert = array(
@@ -251,13 +246,11 @@ class Galleries extends CI_Controller
                     "text" => "Güncelleme sırasında bir problem oluştu",
                     "type"  => "error"
                 );
-
             }
 
             $this->session->set_flashdata("alert", $alert);
 
             redirect(base_url("galleries"));
-
         } else {
 
             $viewData = new stdClass();
@@ -277,10 +270,10 @@ class Galleries extends CI_Controller
 
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
-
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
 
 
         $gallery = $this->gallery_model->get(
@@ -289,19 +282,19 @@ class Galleries extends CI_Controller
             )
         );
 
-        if($gallery){
+        if ($gallery) {
 
 
-            if($gallery->gallery_type != "video"){
+            if ($gallery->gallery_type != "video") {
 
-                if($gallery->gallery_type == "image")
+                if ($gallery->gallery_type == "image")
                     $path = "uploads/$this->viewFolder/images/$gallery->folder_name";
-                else if($gallery->gallery_type == "file")
+                else if ($gallery->gallery_type == "file")
                     $path = "uploads/$this->viewFolder/files/$gallery->folder_name";
 
                 $delete_folder = rmdir($path);
 
-                if(!$delete_folder){
+                if (!$delete_folder) {
 
                     $alert = array(
                         "title" => "İşlem Başarısız",
@@ -314,7 +307,6 @@ class Galleries extends CI_Controller
 
                     die();
                 }
-
             }
 
             $delete = $this->gallery_model->delete(
@@ -324,14 +316,13 @@ class Galleries extends CI_Controller
             );
 
             // TODO Alert Sistemi Eklenecek...
-            if($delete){
+            if ($delete) {
 
                 $alert = array(
                     "title" => "İşlem Başarılı",
                     "text" => "Kayıt başarılı bir şekilde silindi",
                     "type"  => "success"
                 );
-
             } else {
 
                 $alert = array(
@@ -339,19 +330,17 @@ class Galleries extends CI_Controller
                     "text" => "Kayıt silme sırasında bir problem oluştu",
                     "type"  => "error"
                 );
-
-
             }
 
             $this->session->set_flashdata("alert", $alert);
             redirect(base_url("galleries"));
-
         }
     }
 
-    public function isActiveSetter($id){
+    public function isActiveSetter($id)
+    {
 
-        if($id){
+        if ($id) {
 
             $isActive = ($this->input->post("data") === "true") ? 1 : 0;
 
@@ -366,7 +355,8 @@ class Galleries extends CI_Controller
         }
     }
 
-    public function rankSetter(){
+    public function rankSetter()
+    {
 
 
         $data = $this->input->post("data");
@@ -375,7 +365,7 @@ class Galleries extends CI_Controller
 
         $items = $order["ord"];
 
-        foreach ($items as $rank => $id){
+        foreach ($items as $rank => $id) {
 
             $this->gallery_model->update(
                 array(
@@ -386,14 +376,13 @@ class Galleries extends CI_Controller
                     "rank"      => $rank
                 )
             );
-
         }
-
     }
 
     /************* Galeri Elemanları için Kullanılan Metotlar ********/
 
-    public function upload_form($id){
+    public function upload_form($id)
+    {
 
         $viewData = new stdClass();
 
@@ -409,41 +398,41 @@ class Galleries extends CI_Controller
 
         $viewData->item = $item;
 
-        if($item->gallery_type == "image"){// gallery_model den item in gallery_type i
+        if ($item->gallery_type == "image") { // gallery_model den item in gallery_type i
 
-            $viewData->items = $this->image_model->get_all(// buradaki $item gallery_type i image olan item
+            $viewData->items = $this->image_model->get_all( // buradaki $item gallery_type i image olan item
                 array(
                     "gallery_id"    => $id
-                ), "rank ASC"
+                ),
+                "rank ASC"
             );
-            $viewData->folder_name = $item->folder_name;//buradaki $item gallery_model den çektiğimiz veriler
+            $viewData->folder_name = $item->folder_name; //buradaki $item gallery_model den çektiğimiz veriler
 
-        } else if($item->gallery_type == "file"){
+        } else if ($item->gallery_type == "file") {
 
             $viewData->items = $this->file_model->get_all(
                 array(
                     "gallery_id"    => $id
-                ), "rank ASC"
+                ),
+                "rank ASC"
             );
-
-
         } else {
 
             $viewData->items = $this->video_model->get_all(
                 array(
                     "gallery_id"    => $id
-                ), "rank ASC"
+                ),
+                "rank ASC"
             );
-
         }
 
         $viewData->gallery_type = $item->gallery_type;
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-
     }
 
-    public function file_upload_old_method($gallery_id, $gallery_type, $folderName){
+    public function file_upload_old_method($gallery_id, $gallery_type, $folderName)
+    {
 
         $file_name = convertToSEO(pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
 
@@ -455,7 +444,7 @@ class Galleries extends CI_Controller
 
         $upload = $this->upload->do_upload("file");
 
-        if($upload){
+        if ($upload) {
 
             $uploaded_file = $this->upload->data("file_name");
 
@@ -470,25 +459,24 @@ class Galleries extends CI_Controller
                     "gallery_id"    => $gallery_id
                 )
             );
-
         } else {
             echo "islem basarisiz";
         }
-
     }
 
-    public function file_upload($gallery_id, $gallery_type, $folderName){
+    public function file_upload($gallery_id, $gallery_type, $folderName)
+    {
 
         $file_name = convertToSEO(pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
 
-        if($gallery_type == "image"){
+        if ($gallery_type == "image") {
 
             // simple Image...
-            $image_252x156 = upload_picture($_FILES["file"]["tmp_name"], "uploads/$this->viewFolder/images/$folderName/",252,156, $file_name);
-            $image_350x216 = upload_picture($_FILES["file"]["tmp_name"], "uploads/$this->viewFolder/images/$folderName/",350,216, $file_name);
-            $image_851x606 = upload_picture($_FILES["file"]["tmp_name"], "uploads/$this->viewFolder/images/$folderName/",851,606, $file_name);
+            $image_252x156 = upload_picture($_FILES["file"]["tmp_name"], "uploads/$this->viewFolder/images/$folderName/", 252, 156, $file_name);
+            $image_350x216 = upload_picture($_FILES["file"]["tmp_name"], "uploads/$this->viewFolder/images/$folderName/", 364, 216, $file_name);
+            $image_851x606 = upload_picture($_FILES["file"]["tmp_name"], "uploads/$this->viewFolder/images/$folderName/", 851, 606, $file_name);
 
-            if($image_252x156 && $image_350x216 && $image_851x606){
+            if ($image_252x156 && $image_350x216 && $image_851x606) {
 
                 $this->image_model->add(
                     array(
@@ -499,12 +487,9 @@ class Galleries extends CI_Controller
                         "gallery_id"    => $gallery_id
                     )
                 );
-
-
             } else {
                 echo "islem basarisiz";
             }
-
         } else {
 
             $config["allowed_types"] = "*";
@@ -515,7 +500,7 @@ class Galleries extends CI_Controller
 
             $upload = $this->upload->do_upload("file");
 
-            if($upload){
+            if ($upload) {
 
                 $uploaded_file = $this->upload->data("file_name");
 
@@ -528,16 +513,14 @@ class Galleries extends CI_Controller
                         "gallery_id"    => $gallery_id
                     )
                 );
-
             } else {
                 echo $this->upload->display_errors();
             }
-
         }
-
     }
 
-    public function refresh_file_list($gallery_id, $gallery_type, $folder_name){
+    public function refresh_file_list($gallery_id, $gallery_type, $folder_name)
+    {
 
         $viewData = new stdClass();
 
@@ -560,10 +543,10 @@ class Galleries extends CI_Controller
         $render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/file_list_v", $viewData, true);
 
         echo $render_html;
-
     }
 
-    public function fileDelete($id, $parent_id, $gallery_type,$folder_name){
+    public function fileDelete($id, $parent_id, $gallery_type, $folder_name)
+    {
 
 
         $modelName = ($gallery_type == "image") ? "image_model" : "file_model";
@@ -583,20 +566,20 @@ class Galleries extends CI_Controller
         );
 
         // TODO Alert Sistemi Eklenecek...
-        if($delete){
+        if ($delete) {
             unlink("uploads/$this->viewFolder/images/$folder_name/252x156/$fileName->url");
-            unlink("uploads/$this->viewFolder/images/$folder_name/350x216/$fileName->url");
+            unlink("uploads/$this->viewFolder/images/$folder_name/364x216/$fileName->url");
             unlink("uploads/$this->viewFolder/images/$folder_name/851x606/$fileName->url");
             redirect(base_url("galleries/upload_form/$parent_id"));
         } else {
             redirect(base_url("galleries/upload_form/$parent_id"));
         }
-
     }
 
-    public function fileIsActiveSetter($id, $gallery_type){
+    public function fileIsActiveSetter($id, $gallery_type)
+    {
 
-        if($id && $gallery_type){
+        if ($id && $gallery_type) {
 
             $modelName = ($gallery_type == "image") ? "image_model" : "file_model";
 
@@ -613,7 +596,8 @@ class Galleries extends CI_Controller
         }
     }
 
-    public function fileRankSetter($gallery_type){
+    public function fileRankSetter($gallery_type)
+    {
 
         $data = $this->input->post("data");
 
@@ -623,7 +607,7 @@ class Galleries extends CI_Controller
 
         $modelName = ($gallery_type == "image") ? "image_model" : "file_model";
 
-        foreach ($items as $rank => $id){
+        foreach ($items as $rank => $id) {
 
             $this->$modelName->update(
                 array(
@@ -634,16 +618,15 @@ class Galleries extends CI_Controller
                     "rank"      => $rank
                 )
             );
-
         }
-
     }
 
 
     /************* Video Galeri için Kullanılan Metotlar *************/
 
 
-    public function gallery_video_list($id){
+    public function gallery_video_list($id)
+    {
 
         $viewData = new stdClass();
 
@@ -657,7 +640,8 @@ class Galleries extends CI_Controller
         $items = $this->video_model->get_all(
             array(
                 "gallery_id"    => $id
-            ), "rank ASC"
+            ),
+            "rank ASC"
         );
 
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
@@ -669,7 +653,8 @@ class Galleries extends CI_Controller
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
     }
 
-    public function new_gallery_video_form($id){
+    public function new_gallery_video_form($id)
+    {
 
         $viewData = new stdClass();
 
@@ -679,10 +664,10 @@ class Galleries extends CI_Controller
         $viewData->subViewFolder = "video/add";
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-
     }
 
-    public function gallery_video_save($id){
+    public function gallery_video_save($id)
+    {
 
         $this->load->library("form_validation");
 
@@ -696,7 +681,7 @@ class Galleries extends CI_Controller
         );
         $validate = $this->form_validation->run();
 
-        if($validate){
+        if ($validate) {
 
             $insert = $this->video_model->add(
                 array(
@@ -709,14 +694,13 @@ class Galleries extends CI_Controller
             );
 
             // TODO Alert sistemi eklenecek...
-            if($insert){
+            if ($insert) {
 
                 $alert = array(
                     "title" => "İşlem Başarılı",
                     "text" => "Kayıt başarılı bir şekilde eklendi",
                     "type"  => "success"
                 );
-
             } else {
 
                 $alert = array(
@@ -730,7 +714,6 @@ class Galleries extends CI_Controller
             $this->session->set_flashdata("alert", $alert);
 
             redirect(base_url("galleries/gallery_video_list/$id"));
-
         } else {
 
             $viewData = new stdClass();
@@ -743,10 +726,10 @@ class Galleries extends CI_Controller
 
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
-
     }
 
-    public function update_gallery_video_form($id){
+    public function update_gallery_video_form($id)
+    {
 
         $viewData = new stdClass();
 
@@ -763,11 +746,10 @@ class Galleries extends CI_Controller
         $viewData->item = $item;
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-
-
     }
 
-    public function gallery_video_update($id, $gallery_id){
+    public function gallery_video_update($id, $gallery_id)
+    {
 
         $this->load->library("form_validation");
 
@@ -782,7 +764,7 @@ class Galleries extends CI_Controller
 
         $validate = $this->form_validation->run();
 
-        if($validate){
+        if ($validate) {
 
             $update = $this->video_model->update(
                 array(
@@ -794,14 +776,13 @@ class Galleries extends CI_Controller
             );
 
             // TODO Alert sistemi eklenecek...
-            if($update){
+            if ($update) {
 
                 $alert = array(
                     "title" => "İşlem Başarılı",
                     "text" => "Kayıt başarılı bir şekilde güncellendi",
                     "type"  => "success"
                 );
-
             } else {
 
                 $alert = array(
@@ -809,13 +790,11 @@ class Galleries extends CI_Controller
                     "text" => "Güncelleme sırasında bir problem oluştu",
                     "type"  => "error"
                 );
-
             }
 
             $this->session->set_flashdata("alert", $alert);
 
             redirect(base_url("galleries/gallery_video_list/$gallery_id"));
-
         } else {
 
             $viewData = new stdClass();
@@ -835,10 +814,10 @@ class Galleries extends CI_Controller
 
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
-
     }
 
-    public function rankGalleryVideoSetter(){
+    public function rankGalleryVideoSetter()
+    {
 
 
         $data = $this->input->post("data");
@@ -847,7 +826,7 @@ class Galleries extends CI_Controller
 
         $items = $order["ord"];
 
-        foreach ($items as $rank => $id){
+        foreach ($items as $rank => $id) {
 
             $this->video_model->update(
                 array(
@@ -858,14 +837,13 @@ class Galleries extends CI_Controller
                     "rank"      => $rank
                 )
             );
-
         }
-
     }
 
-    public function galleryVideoIsActiveSetter($id){
+    public function galleryVideoIsActiveSetter($id)
+    {
 
-        if($id){
+        if ($id) {
 
             $isActive = ($this->input->post("data") === "true") ? 1 : 0;
 
@@ -880,7 +858,8 @@ class Galleries extends CI_Controller
         }
     }
 
-    public function galleryVideoDelete($id, $gallery_id){
+    public function galleryVideoDelete($id, $gallery_id)
+    {
 
         $delete = $this->video_model->delete(
             array(
@@ -889,14 +868,13 @@ class Galleries extends CI_Controller
         );
 
         // TODO Alert Sistemi Eklenecek...
-        if($delete){
+        if ($delete) {
 
             $alert = array(
                 "title" => "İşlem Başarılı",
                 "text" => "Kayıt başarılı bir şekilde silindi",
                 "type"  => "success"
             );
-
         } else {
 
             $alert = array(
@@ -904,14 +882,9 @@ class Galleries extends CI_Controller
                 "text" => "Kayıt silme sırasında bir problem oluştu",
                 "type"  => "error"
             );
-
-
         }
 
         $this->session->set_flashdata("alert", $alert);
         redirect(base_url("galleries/gallery_video_list/$gallery_id"));
-
     }
-
-
 }

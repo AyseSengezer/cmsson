@@ -58,13 +58,15 @@
                     <?php foreach ($image as $slideimage) { ?>
                         <div class="overlay-container overlay-visible">
 
-                            <img src="<?php echo get_picture("galleries_v/images/isyeri-cekimleri", $slideimage->url, "350x216"); ?>" alt="">
+                            <img src="<?php echo get_picture("galleries_v/images/isyeri-cekimleri", $slideimage->url, "364x216"); ?>" alt="">
+                            <a href="<?php echo get_picture("galleries_v/images/isyeri-cekimleri", $slideimage->url, "851x606"); ?>" class="overlay-link  popup-img">
+                                <i class="fa fa-plus"></i>
+                            </a>
                             <div class="overlay-bottom hidden-sm-down">
                                 <div class="text">
                                     <h3 class="title">Stüdyodan resimler</h3>
                                 </div>
                             </div>
-                            <a href="#" class="owl-carousel--popup-img overlay-link" title="image title"><i class="icon-plus-1"></i></a>
                         </div>
                     <?php } ?>
                 </div>
