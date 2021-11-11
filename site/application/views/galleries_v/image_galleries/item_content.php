@@ -14,8 +14,8 @@
 
                         <?php foreach ($images as $image) { ?>
 
-                            <div class="col-3 mb-20">
-                                <div class="overlay-container">
+                            <div class="col-3 mb-20 col-gal-4 ">
+                                <div class="overlay-container item-container">
                                     <img src="<?php echo get_picture("galleries_v/images/$gallery->folder_name", $image->url, "252x156"); ?>" alt="">
                                     <a href="<?php echo get_picture("galleries_v/images/$gallery->folder_name", $image->url, "851x606"); ?>" class="overlay-link small popup-img" title="<?php echo $gallery->title; ?>">
                                         <i class="fa fa-plus"></i>

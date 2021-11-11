@@ -8,15 +8,17 @@
 
             <div class="row">
                 <!-- main start -->
-                <?php $this->load->view("{$viewFolder}/isotope"); ?>
+
+                <?php $this->load->view("{$viewFolder}/services"); ?>
+
 
             </div>
 
 
             <div class="row">
                 <!-- main start -->
+                <?php $this->load->view("{$viewFolder}/isotope"); ?>
 
-                <?php $this->load->view("{$viewFolder}/services"); ?>
 
                 <!-- main end -->
             </div>
