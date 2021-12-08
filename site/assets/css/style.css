@@ -5951,6 +5951,9 @@ fieldset[disabled] .form-control {
   .overlay-link {
     width: 327px;
   }
+  .item-img {
+    width: 70px !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -5962,12 +5965,27 @@ fieldset[disabled] .form-control {
   .overlay-link {
     width: 327px !important;
   }
+  .item-img {
+    width: 90px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hidden {
+    display: none;
+  }
 }
 /* ! ****************** */
 
 @media (max-width: 575px) {
+  .hidden-sm {
+    display: none;
+  }
   .overlay-container .text p:not(.mobile-visible) {
     display: none;
+  }
+  .hidden {
+    display: inline-block;
   }
 }
 

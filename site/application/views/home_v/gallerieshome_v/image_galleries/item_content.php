@@ -15,7 +15,7 @@
                         <?php foreach ($images as $image) { ?>
 
                             <div class="col-3 mb-20">
-                                <div class="overlay-container item-container">
+                                <div class="overlay-container item-img">
                                     <img src="<?php echo get_picture("galleries_v/images/$gallery->folder_name", $image->url, "252x156"); ?>" alt="">
                                     <a href="<?php echo get_picture("galleries_v/images/$gallery->folder_name", $image->url, "851x606"); ?>" class="overlay-link small popup-img" title="<?php echo $gallery->title; ?>">
                                         <i class="fa fa-plus"></i>
@@ -36,7 +36,7 @@
                     <?php } ?>
 
                     <div class="col-md-12">
-                        <a href="<?php echo base_url("fotograf-galerisi"); ?>" class="btn btn-default">
+                        <a href="<?php echo base_url(); ?>" class="btn btn-default">
                             <i class="fa fa-arrow-left"></i> Geri Dön
                         </a>
 

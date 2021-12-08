@@ -10,16 +10,13 @@
 
                 <div class="row grid-space-20">
 
-                    <?php if (!empty($images)) { ?>
+                    <?php if(!empty($videos_home)) { ?>
 
-                        <?php foreach ($images as $image) { ?>
+                        <?php foreach ($videos_home as $video) { ?>
 
                             <div class="col-3 mb-20">
-                                <div class="overlay-container item-container">
-                                    <img src="<?php echo get_picture("galleries_v/images/$gallery->folder_name", $image->url, "252x156"); ?>" alt="">
-                                    <a href="<?php echo get_picture("galleries_v/images/$gallery->folder_name", $image->url, "851x606"); ?>" class="overlay-link small popup-img" title="<?php echo $gallery->title; ?>">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="<?php echo $video->url; ?>"></iframe>
                                 </div>
                             </div>
 
@@ -36,7 +33,7 @@
                     <?php } ?>
 
                     <div class="col-md-12">
-                        <a href="<?php echo base_url("fotograf-galerisi"); ?>" class="btn btn-default">
+                        <a href="<?php echo base_url(); ?>" class="btn btn-default">
                             <i class="fa fa-arrow-left"></i> Geri Dön
                         </a>
 
@@ -48,3 +45,5 @@
         </div>
     </div>
 </section>
+
+

@@ -5,7 +5,7 @@
 
 <!-- main-container start -->
 <!-- ================ -->
-<div class="container">
+<div class="container hidden-sm">
   <h1 class="page-title">Galeriler</h1>
   <div class="separator-2"></div>
   <div class="row">
